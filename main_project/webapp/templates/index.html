@@ -1,0 +1,30 @@
+<b>FILMS</b>
+<br><br>
+
+<b>Array Completo</b>
+<br><br>
+{% for film in films %}
+    {{ film }}
+{% endfor %}
+<br><br>
+
+
+<br><br>
+{% for film in films %}
+    <b>Columnas</b>
+    <br><br>
+    {{ film.columns }} <br><br>
+
+    <b>Registros</b>
+    <br><br>
+    {{ film.rows }} <br><br>
+
+
+    <b>Titulos</b>
+    <br><br>
+    {% for row in film.rows %}    
+      {{ row.title }} <br>
+    {% endfor %}
+
+{% endfor %}
+<br><br>

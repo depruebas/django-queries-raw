@@ -1,0 +1,26 @@
+from django.db import connection
+
+
+class BaseModel:
+  
+  def ExecuteQuery ( sql):
+    cursor = connection.cursor()
+    
+    cursor.execute( sql)
+
+    columns = [col[0] for col in cursor.description]
+
+    rows = [ dict(zip(columns, row)) for row in cursor.fetchall() ]
+
+    return [ { 'columns': columns, 
+               'rows': rows,
+               'total': cursor.rowcount       
+            } ]
+    
+
+  def Execute ( sql):
+    cursor = connection.cursor()
+    
+    cursor.execute( sql)
+
+    return [ cursor.fetchone() ]
